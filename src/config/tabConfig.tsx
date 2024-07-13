@@ -1,25 +1,43 @@
-// src/config/tabsConfig.ts
-import React from "react"
-import TabContent from "../components/TabContent/TabContent"
+import React from 'react';
+import TabContent from '../components/TabContent/TabContent';
+import { generateUniqueLoremIpsum } from '../utils/loremIpsum';
 
 export interface TabConfig {
-  id: number
-  name: string
-  path: string
-  element: React.ReactNode
+  id: number;
+  name: string;
+  path: string;
+  element: React.ReactNode;
 }
 
 export const tabsConfig: TabConfig[] = [
   {
     id: 1,
-    name: "Tab 1",
-    path: "/tab1",
-    element: <TabContent title="Tab 1 Title" content={<div>Content for Tab 1</div>} />
+    name: 'Section 1',
+    path: '/section1',
+    element: <TabContent grade="B+" title="Section 1 of campaign" content={generateUniqueLoremIpsum()} />,
   },
   {
     id: 2,
-    name: "Tab 2",
-    path: "/tab2",
-    element: <TabContent title="Tab 2 Title" content={<div>Content for Tab 2</div>} />
+    name: 'Section 2',
+    path: '/section2',
+    element: <TabContent grade="C" title="Section 2 of campaign" content={generateUniqueLoremIpsum()} />,
   },
-]
+  {
+    id: 3,
+    name: 'Section 3',
+    path: '/section3',
+    element: <TabContent grade="C" title="Section 3 of campaign" content={generateUniqueLoremIpsum()} />,
+  },
+  {
+    id: 4,
+    name: 'Section 4',
+    path: '/section4',
+    element: <TabContent grade="C" title="Section 4 of campaign" content={generateUniqueLoremIpsum()} />,
+  },
+  {
+    id: 5,
+    name: 'Section 5',
+    path: '/section5',
+    element: <TabContent grade="C" title="Section 5 of campaign" content={generateUniqueLoremIpsum()} />,
+  },
+];

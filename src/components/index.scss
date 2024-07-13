@@ -1,4 +1,6 @@
 @import '../components/tokens';
+@import './TabContent/TabContent.scss'; 
+@import './Modal/Modal.scss';
 
 html {
     scroll-behavior: smooth;

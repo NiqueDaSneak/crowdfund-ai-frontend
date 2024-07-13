@@ -5,7 +5,7 @@ import Tab from "../Tab/Tab"
 
 const BottomNav: React.FC = () => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around', backgroundColor: 'red' }}>
+    <div style={{ width: '100vw', display: 'flex', justifyContent: 'space-around', backgroundColor: 'red' }}>
       {tabsConfig.map((tab: TabConfig) => (
         <Tab key={tab.id} tab={tab} />
       ))}
