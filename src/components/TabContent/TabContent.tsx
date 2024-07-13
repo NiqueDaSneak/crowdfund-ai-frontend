@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import Modal from '../Modal/Modal'; // Import the Modal component
+import Modal from '../Modal/Modal';
+import { getColorForGrade } from '../../utils/gradeColors'; // Import the color mapping function
+import './TabContent.scss'; // Import the SCSS file
 
 interface TabContentProps {
   title: string;
@@ -9,6 +11,7 @@ interface TabContentProps {
 
 const TabContent: React.FC<TabContentProps> = ({ title, content, grade }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const gradeColor = getColorForGrade(grade);
 
   const handleGradeClick = () => {
     setIsModalOpen(true);
@@ -28,6 +31,7 @@ const TabContent: React.FC<TabContentProps> = ({ title, content, grade }) => {
           role="button"
           tabIndex={0}
           onKeyDown={(e) => e.key === 'Enter' && handleGradeClick()}
+          style={{ backgroundColor: gradeColor }}
         >
           {grade}
         </span>

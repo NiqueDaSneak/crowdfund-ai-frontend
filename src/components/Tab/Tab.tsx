@@ -1,20 +1,27 @@
-// src/components/Tab.js
-import React from "react"
-import { Link, useLocation } from "react-router-dom"
-import { TabConfig } from "../../config/tabConfig"
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { getColorForGrade, getDarkerColorForGrade } from '../../utils/gradeColors'; // Import the color mapping functions
+import './Tab.scss'; // Import the SCSS file
 
 interface TabProps {
-    tab: TabConfig
-  }
-  const Tab: React.FC<TabProps> = ({ tab }) => {
-    const location = useLocation()
-  const isActive = location.pathname === tab.path
-
-  return (
-    <Link to={tab.path} style={{textAlign: 'center', fontSize: '10pt', padding: '10px', color: isActive ? 'white' : 'black', backgroundColor: isActive ? 'blue' : 'transparent' }}>
-      {tab.name}
-    </Link>
-  )
+  tab: {
+    id: number;
+    name: string;
+    path: string;
+    grade: string;
+  };
 }
 
-export default Tab
+const Tab: React.FC<TabProps> = ({ tab }) => {
+  const location = useLocation();
+  const isActive = location.pathname === tab.path;
+  const gradeColor = isActive ? getColorForGrade(tab.grade) : getDarkerColorForGrade(tab.grade);
+
+  return (
+    <Link to={tab.path} className="tab" style={{ backgroundColor: gradeColor }}>
+      {tab.name}
+    </Link>
+  );
+};
+
+export default Tab;
