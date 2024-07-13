@@ -11,7 +11,7 @@ interface TabProps {
   const isActive = location.pathname === tab.path
 
   return (
-    <Link to={tab.path} style={{ padding: '10px', color: isActive ? 'white' : 'black', backgroundColor: isActive ? 'blue' : 'transparent' }}>
+    <Link to={tab.path} style={{textAlign: 'center', fontSize: '10pt', padding: '10px', color: isActive ? 'white' : 'black', backgroundColor: isActive ? 'blue' : 'transparent' }}>
       {tab.name}
     </Link>
   )

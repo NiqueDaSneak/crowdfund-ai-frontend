@@ -12,7 +12,6 @@ const IndexPage: React.FC<PageProps> = () => {
     style={{
       display: 'grid',
       height: '100vh',
-      backgroundColor: 'pink',
       alignContent: 'space-between',
     }}
 
