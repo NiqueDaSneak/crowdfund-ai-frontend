@@ -1,0 +1,45 @@
+$brand-color: #ffde7d;
+
+$background-primary: #1a1a1a;
+$background-secondary: #252525;
+$background-tertiary: #303030;
+$background-quaternary: #3b3b3b;
+$background-quinary: #454545;
+
+$primary-text: #f0f0f0;
+$secondary-text: #e5e5e5;
+$tertiary-text: #d9d9d9;
+$quaternary-text: #cccccc;
+$quinary-text: #b3b3b3;
+
+$primary-color: #303030;
+$secondary-color: #424242;
+$tertiary-color: #616161;
+
+$border-color: #4d4d4d;
+$border-color-light: #6d6d6d;
+
+$accent-color: $brand-color;
+$accent-color-hover: darken($accent-color, 10%);
+$accent-color-active: darken($accent-color, 20%);
+
+$success-color: #81c784;
+$error-color: #e57373;
+$warning-color: #ffb74d;
+$info-color: #64b5f6;
+
+$gradient-0: linear-gradient(to right, $background-primary, $background-secondary);
+$gradient-1: linear-gradient(to right, $background-secondary, $background-quaternary);
+$gradient-2: linear-gradient(to right, $background-quaternary, $background-quinary);
+
+.gradient-0 {
+  background: $gradient-0;
+}
+
+.gradient-1 {
+  background: $gradient-1;
+}
+
+.gradient-2 {
+  background: $gradient-2;
+}

@@ -1,8 +1,8 @@
 {
-  "name": "crowdfund-ai-fronted",
+  "name": "crowdfund-ai-frontend",
   "version": "1.0.0",
   "private": true,
-  "description": "crowdfund-ai-fronted",
+  "description": "crowdfund-ai-frontend",
   "author": "Dom Clemmer",
   "keywords": [
     "gatsby"
@@ -18,16 +18,23 @@
   "dependencies": {
     "gatsby": "^5.13.5",
     "gatsby-plugin-image": "^3.13.1",
+    "gatsby-plugin-sass": "^6.13.1",
     "gatsby-plugin-sharp": "^5.13.1",
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.24.1",
+    "sass": "^1.77.8"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
+    "eslint": "^9.7.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.3.2",
     "typescript": "^5.3.3"
   }
 }
