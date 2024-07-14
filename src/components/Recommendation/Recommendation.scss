@@ -1,0 +1,25 @@
+.recommendation {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: space-between;
+  }
+  
+  .recommendation-status {
+    display: flex;
+    margin-left: 10px;
+  }
+  
+  .status-box {
+    height: 30px;
+    width: 30px;
+  }
+  
+  .status-box.met {
+    background-color: green;
+  }
+  
+  .status-box.not-met {
+    background-color: red;
+  }
+  

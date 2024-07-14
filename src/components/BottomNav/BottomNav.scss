@@ -1,8 +1,11 @@
 .bottom-nav {
+    position: fixed;
+    bottom: 0;
     width: 100vw;
     display: flex;
     justify-content: space-around;
-    background-color: #f0f0f0; // Default background color for the nav
-    overflow: hidden; // Ensure no overflow for the tabs
+    background-color: #f0f0f0;
+    overflow: hidden;
+    z-index: 10;
   }
   

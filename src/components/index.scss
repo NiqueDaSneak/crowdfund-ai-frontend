@@ -1,8 +1,10 @@
-@import '../components/tokens';
+@import './tokens.scss';
 @import './TabContent/TabContent.scss'; 
 @import './Modal/Modal.scss';
 @import './BottomNav/BottomNav.scss';
 @import './Tab/Tab.scss';
+@import './Recommendation/Recommendation.scss';
+@import './RecommendationsList/RecommendationList.scss';
 
 html {
     scroll-behavior: smooth;

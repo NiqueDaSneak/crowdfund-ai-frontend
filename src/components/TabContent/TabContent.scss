@@ -1,73 +1,57 @@
 .tab-content {
     display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
   }
   
   .tab-header {
-    padding: 0px 0px 0px 10px;
-    width: 100vw;
+    height: auto;
+    color: black;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 10;
+    transition: height 2s ease;
+    // overflow: hidden; /* Ensure the content is hidden when not expanded */
+  }
+  
+  .tab-header-main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+  }
+  
+  .grade-reasoning {
+    padding: 0px 10px 0px 10px;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .tab-header.expanded {
+    height: 150px; 
   }
   
   .tab-body {
-    padding: 0px 10px 0px 10px;
-    width: 100vw;
+    margin-top: 90px; /* Adjust this value based on the height of your header */
+    padding: 10px;
+    overflow-y: auto;
+    height: calc(100vh - 60px - 60px); /* Adjust this value based on the height of your header and footer */
   }
   
   .grade {
-    background-color: purple;
+    color: white;
     font-size: 40pt;
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     min-width: 80px;
-    text-align: center;  
-}
-  
-  .grade:hover {
-    background-color: darkviolet;
-    transform: scale(1.05);
-  }
-  
-  .modal {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: slideIn 0.5s forwards;
-  }
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 600px;
-    width: 80%;
     text-align: center;
   }
   
-  .close-modal {
-    background-color: transparent;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  @keyframes slideIn {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(0);
-    }
+  .grade:hover {
+    transform: scale(1.05);
   }
   
