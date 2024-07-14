@@ -13,7 +13,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "develop:mobile": "./start-gatsby-ngrok.sh"
   },
   "dependencies": {
     "gatsby": "^5.13.5",

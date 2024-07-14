@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getColorForGrade, getDarkerColorForGrade } from '../../utils/gradeColors'; // Import the color mapping functions
-import './Tab.scss'; // Import the SCSS file
 
 interface TabProps {
   tab: {
