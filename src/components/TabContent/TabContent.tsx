@@ -13,6 +13,7 @@ interface TabContentProps {
 const TabContent: React.FC<TabContentProps> = ({ title, content, grade, section }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const [loading, setLoading] = useState(false); // Loading state
   const gradeColor = getColorForGrade(grade);
 
   const handleGradeClick = () => {
@@ -22,9 +23,10 @@ const TabContent: React.FC<TabContentProps> = ({ title, content, grade, section 
   useEffect(() => {
     if (isExpanded) {
       const fetchRecommendations = async () => {
+        setLoading(true); // Set loading to true when fetching
         const recs = await getRecommendations(section, grade);
-        console.log(`Setting recommendations: ${JSON.stringify(recs)}`);
         setRecommendations(recs);
+        setLoading(false); // Set loading to false after fetching
       };
       fetchRecommendations();
     }
@@ -46,7 +48,7 @@ const TabContent: React.FC<TabContentProps> = ({ title, content, grade, section 
             {grade}
           </span>
         </div>
-        {isExpanded && <RecommendationsList recommendations={recommendations} />}
+        {isExpanded && <RecommendationsList recommendations={recommendations} loading={loading} />}
       </section>
       <section className="tab-body">
         {content}

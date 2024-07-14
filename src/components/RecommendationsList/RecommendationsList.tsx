@@ -8,9 +8,32 @@ export interface Recommendation {
 
 interface RecommendationsListProps {
   recommendations: Recommendation[];
+  loading: boolean; // New loading prop
 }
 
-const RecommendationsList: React.FC<RecommendationsListProps> = ({ recommendations }) => {
+const RecommendationsList: React.FC<RecommendationsListProps> = ({ recommendations, loading }) => {
+  if (loading) {
+    return (
+      <div className="recommendations-list">
+        <span>Recommendations:</span>
+        <section>
+          <div className="spinner"></div> {/* Spinner for loading state */}
+        </section>
+      </div>
+    );
+  }
+
+  if (recommendations.length === 0) {
+    return (
+      <div className="recommendations-list">
+        <span>Recommendations:</span>
+        <section>
+          <p>No recommendations available.</p> {/* Message for no recommendations */}
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className="recommendations-list">
       <span>Recommendations:</span>
