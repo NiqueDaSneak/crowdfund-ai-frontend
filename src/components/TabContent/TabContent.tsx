@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Modal from '../Modal/Modal';
 import { getColorForGrade } from '../../utils/gradeColors'; // Import the color mapping function
-import './TabContent.scss'; // Import the SCSS file
 
 interface TabContentProps {
   title: string;
