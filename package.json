@@ -17,6 +17,7 @@
     "develop:mobile": "./start-gatsby-ngrok.sh"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "gatsby": "^5.13.5",
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-sass": "^6.13.1",
@@ -33,10 +34,11 @@
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
-    "eslint": "^9.7.0",
+    "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "prettier": "^3.3.2",
+    "gatsby-plugin-prettier-eslint": "^1.0.6",
+    "prettier": "^3.3.3",
     "typescript": "^5.3.3"
   }
 }

@@ -1,57 +1,82 @@
 .tab-content {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    height: 100vh;
+  display: grid;
+  height: 100vh;
+  position: relative;
+  grid-template-rows: auto auto auto;
+  align-content: space-between;
+}
+
+.tab-header {
+  height: fit-content;
+  color: black;
+  // position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 10;
+  transition: height 2s ease;
+  // overflow: hidden; /* Ensure the content is hidden when not expanded */
+}
+
+.tab-header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.grade-reasoning {
+  padding: 0px 10px 0px 10px;
+  background-color: #f9f9f9;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tab-header.expanded {
+  height: fit-content;
+}
+
+.tab-body {
+  margin-top: 90px; /* Adjust this value based on the height of your header */
+  padding: 10px;
+  overflow-y: auto;
+  height: calc(
+    100vh - 60px - 60px
+  ); /* Adjust this value based on the height of your header and footer */
+}
+
+.grade {
+  color: white;
+  font-size: 40pt;
+  padding: 10px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+  min-width: 80px;
+  text-align: center;
+}
+
+.grade:hover {
+  transform: scale(1.05);
+}
+
+.input-form {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.text-box {
+  font-size: 16pt;
+  width: 100%;
+  &.extended {
+    height: 160px;
   }
-  
-  .tab-header {
-    height: auto;
-    color: black;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: white;
-    z-index: 10;
-    transition: height 2s ease;
-    // overflow: hidden; /* Ensure the content is hidden when not expanded */
+  &.full {
+    height: 300px;
   }
-  
-  .tab-header-main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .grade-reasoning {
-    padding: 0px 10px 0px 10px;
-    background-color: #f9f9f9;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .tab-header.expanded {
-    height: fit-content; 
-  }
-  
-  .tab-body {
-    margin-top: 90px; /* Adjust this value based on the height of your header */
-    padding: 10px;
-    overflow-y: auto;
-    height: calc(100vh - 60px - 60px); /* Adjust this value based on the height of your header and footer */
-  }
-  
-  .grade {
-    color: white;
-    font-size: 40pt;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    min-width: 80px;
-    text-align: center;
-  }
-  
-  .grade:hover {
-    transform: scale(1.05);
-  }
-  
+}

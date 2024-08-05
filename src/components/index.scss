@@ -1,5 +1,5 @@
 @import './tokens.scss';
-@import './TabContent/TabContent.scss'; 
+@import './TabContent/TabContent.scss';
 @import './Modal/Modal.scss';
 @import './BottomNav/BottomNav.scss';
 @import './Tab/Tab.scss';
@@ -7,29 +7,31 @@
 @import './RecommendationsList/RecommendationList.scss';
 
 html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-      background-color: $background-secondary;
-      color: $primary-text;
-  }
-  
-  /* Variables */
-  * {
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-      height: 100vh;
-      width: 100vw;
-      margin: 0;
-    }
-      
-    .hidden {
-      display: none;
-    }
-      
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $background-secondary;
+  color: $primary-text;
+  // position: fixed;
+  // top: 0;
+  // bottom: 0;
+}
+
+/* Variables */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
