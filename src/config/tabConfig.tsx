@@ -13,7 +13,7 @@ export interface TabConfig {
 export const tabsConfig: TabConfig[] = [
   {
     id: 1,
-    name: 'Campaign Heading',
+    name: 'Heading',
     path: '/heading',
     grade: 'D',
     element: (
@@ -22,7 +22,7 @@ export const tabsConfig: TabConfig[] = [
   },
   {
     id: 2,
-    name: 'Campaign Subheading',
+    name: 'Subheading',
     path: '/subheading',
     grade: 'B+',
     element: (
@@ -31,7 +31,7 @@ export const tabsConfig: TabConfig[] = [
   },
   {
     id: 3,
-    name: 'Campaign Story',
+    name: 'Story',
     path: '/story',
     grade: 'B+',
     element: <TabContent section="story" grade="B+" title="Campaign Story" />,

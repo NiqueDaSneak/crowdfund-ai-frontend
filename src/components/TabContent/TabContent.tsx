@@ -13,16 +13,16 @@ import classNames from 'classnames';
 interface TabContentProps {
   title: string;
   grade: string;
-  section: string; // New prop to identify the section
+  section: string;
 }
 
 const TabContent: React.FC<TabContentProps> = ({ title, grade, section }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
-  const [loading, setLoading] = useState(false); // Loading state
-  const [inputValue, setInputValue] = useState(''); // Input state
+  const [loading, setLoading] = useState(false);
+  const [sectionData, setSectionData] = useState('');
   const [result, setResult] = useState<any>(null);
-
+  const [categories, setCategories] = useState('');
   const gradeColor = getColorForGrade(grade);
 
   const handleGradeClick = () => {
@@ -32,20 +32,21 @@ const TabContent: React.FC<TabContentProps> = ({ title, grade, section }) => {
   useEffect(() => {
     if (isExpanded) {
       const fetchRecommendations = async () => {
-        setLoading(true); // Set loading to true when fetching
+        setLoading(true);
         const recs = await getRecommendations(section, grade);
         setRecommendations(recs);
-        setLoading(false); // Set loading to false after fetching
+        setLoading(false);
       };
       fetchRecommendations();
     }
   }, [isExpanded, grade, section]);
 
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log('a working click');
     e.preventDefault();
     try {
-      console.log(`Submitted value: ${inputValue}`);
-      const response = await processContent(section, inputValue);
+      console.log(`Submitted value: ${sectionData}`);
+      const response = await processContent(section, sectionData, categories);
       console.log('Received response:', response);
       setResult(response);
     } catch (error) {
@@ -78,13 +79,19 @@ const TabContent: React.FC<TabContentProps> = ({ title, grade, section }) => {
       </section>
       <section>
         <form onSubmit={handleSubmit} className="input-form">
+          <input
+            className="text-box util-mb-med"
+            placeholder="...a category? e.g. health, game, etc"
+            value={categories}
+            onChange={(e) => setCategories(e.target.value)}
+          />
           <textarea
             className={classNames('text-box', {
               extended: section === 'subheading',
               full: section === 'story',
             })}
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            value={sectionData}
+            onChange={(e) => setSectionData(e.target.value)}
             maxLength={
               section === 'title' ? 60 : section === 'subheading' ? 135 : 999
             }
