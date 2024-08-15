@@ -93,7 +93,7 @@ const TabContent: React.FC<TabContentProps> = ({ title, grade, section }) => {
             value={sectionData}
             onChange={(e) => setSectionData(e.target.value)}
             maxLength={
-              section === 'title' ? 60 : section === 'subheading' ? 135 : 999
+              section === 'title' ? 60 : section === 'subheading' ? 135 : 512
             }
             minLength={20}
             placeholder={`Enter your project ${section}`}
