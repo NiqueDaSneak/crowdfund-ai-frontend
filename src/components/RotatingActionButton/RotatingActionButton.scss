@@ -6,7 +6,7 @@
   right: 30px;
   width: 90px;
   height: 90px;
-  z-index: 1;
+  z-index: 101;
   @include respond-to(desktop) {
     width: 125px;
     bottom: 100px;
