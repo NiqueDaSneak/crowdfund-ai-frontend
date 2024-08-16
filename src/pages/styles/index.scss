@@ -182,7 +182,8 @@
   margin: 0 auto;
 
   p {
-    font-size: 20pt;
+    font-size: 13pt;
+    padding: 30px;
   }
   @include respond-to(desktop) {
     width: 50%;
