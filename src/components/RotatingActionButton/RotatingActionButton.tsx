@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
-import rotatingText from '../../images/rotating-text.svg';
-// import './RotatingActionButton.css'; // Assuming your CSS is in this file
+import rotatingDemoText from '../../images/rotating-demo-text.svg';
+import rotatingBackText from '../../images/rotating-back-text.svg';
+interface RotatingActionButtonProps {
+  isMenuOpen: boolean;
+  setIsMenuOpen: (isOpen: boolean) => void;
+}
 
-const RotatingActionButton = ({ isMenuOpen, setIsMenuOpen }) => {
+const RotatingActionButton: React.FC<RotatingActionButtonProps> = ({
+  isMenuOpen,
+  setIsMenuOpen,
+}) => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -10,7 +17,7 @@ const RotatingActionButton = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <button className="image-container">
       <img
-        src={rotatingText}
+        src={isMenuOpen ? rotatingBackText : rotatingDemoText}
         alt="Background Image"
         className="background-image"
       />

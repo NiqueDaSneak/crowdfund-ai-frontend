@@ -8,8 +8,10 @@
 @import './AnimatedChevron/AnimatedChevron.scss';
 @import './RecommendationsList/RecommendationList.scss';
 @import './RotatingActionButton/RotatingActionButton.scss';
+@import './DemoLoginModal/DemoLoginModal.scss';
 
-@import '../pages/HomePage/HomePage.scss';
+@import '../pages/styles/index.scss';
+@import '../pages/styles/campaign.scss';
 
 html {
   scroll-behavior: smooth;
