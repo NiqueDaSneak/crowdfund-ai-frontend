@@ -5,7 +5,13 @@
 @import './BottomNav/BottomNav.scss';
 @import './Tab/Tab.scss';
 @import './Recommendation/Recommendation.scss';
+@import './AnimatedChevron/AnimatedChevron.scss';
 @import './RecommendationsList/RecommendationList.scss';
+@import './RotatingActionButton/RotatingActionButton.scss';
+@import './DemoLoginModal/DemoLoginModal.scss';
+
+@import '../pages/styles/index.scss';
+@import '../pages/styles/campaign.scss';
 
 html {
   scroll-behavior: smooth;
@@ -14,25 +20,28 @@ html {
 body {
   background-color: $background-secondary;
   color: $primary-text;
-  // position: fixed;
-  // top: 0;
-  // bottom: 0;
+  font-family: Ysabeau Infant Variable;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
 }
 
-/* Variables */
 * {
   box-sizing: border-box;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
+.hidden {
+  opacity: 0;
 }
 
-.hidden {
-  display: none;
+button,
+input[type='submit'],
+input[type='reset'] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }

@@ -1,0 +1,41 @@
+{
+  "version": "3",
+  "remote": {
+    "https://edge.netlify.com/": "fd941d61d88673d5f28aab283fb86fcc50f08a3bc80ee5470498fcfa88c65cfb",
+    "https://edge.netlify.com/bootstrap/config.ts": "0aa0a225d978b89e0e62cbd853701605199e7a84095e55eeb70147faf1a24803",
+    "https://edge.netlify.com/bootstrap/context.ts": "f8392d0bfc4a345f0508157a9ed1a8b0ac832275e5ae6fe9301a8268fbfeb0b5",
+    "https://edge.netlify.com/bootstrap/cookie.ts": "8b0baae708989ca183c6f3b4ab3d029e6abcbc2e43f93edeb0ff447b3bbc3a05",
+    "https://edge.netlify.com/bootstrap/edge_function.ts": "b8253e86aa83c67341f5cfedeba5049d77fbf84dcab7eceff7566b7728ae9b39",
+    "https://edge.netlify.com/bootstrap/globals/types.ts": "a92107bafea2f88f9c7f787575732436abc40e45ccc062c76093096e7c34c84b"
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:@fontsource-variable/montagu-slab@^5.0.20",
+        "npm:@fontsource-variable/ysabeau-infant@^5.0.9",
+        "npm:@netlify/functions@^2.8.1",
+        "npm:@types/node@^20.11.19",
+        "npm:@types/react-dom@^18.2.19",
+        "npm:@types/react@^18.2.55",
+        "npm:classnames@^2.5.1",
+        "npm:eslint-config-prettier@^9.1.0",
+        "npm:eslint-plugin-prettier@^5.1.3",
+        "npm:eslint@^9.8.0",
+        "npm:gatsby-plugin-image@^3.13.1",
+        "npm:gatsby-plugin-prettier-eslint@^1.0.6",
+        "npm:gatsby-plugin-sass@^6.13.1",
+        "npm:gatsby-plugin-sharp@^5.13.1",
+        "npm:gatsby-source-filesystem@^5.13.1",
+        "npm:gatsby-transformer-sharp@^5.13.1",
+        "npm:gatsby@^5.13.5",
+        "npm:lorem-ipsum@^2.0.8",
+        "npm:prettier@^3.3.3",
+        "npm:react-dom@^18.2.0",
+        "npm:react-router-dom@^6.24.1",
+        "npm:react@^18.2.0",
+        "npm:sass@^1.77.8",
+        "npm:typescript@^5.3.3"
+      ]
+    }
+  }
+}
