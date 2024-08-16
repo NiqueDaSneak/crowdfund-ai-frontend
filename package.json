@@ -17,6 +17,8 @@
     "develop:mobile": "./start-gatsby-ngrok.sh"
   },
   "dependencies": {
+    "@fontsource-variable/montagu-slab": "^5.0.20",
+    "@fontsource-variable/ysabeau-infant": "^5.0.9",
     "classnames": "^2.5.1",
     "gatsby": "^5.13.5",
     "gatsby-plugin-image": "^3.13.1",

@@ -1,0 +1,76 @@
+@import '../../components/mixins.scss';
+
+.image-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 90px;
+  height: 90px;
+  z-index: 1;
+  @include respond-to(desktop) {
+    width: 125px;
+    bottom: 100px;
+    right: 50px;
+  }
+}
+
+.background-image {
+  width: 100%;
+  height: auto;
+  animation: rotate-bg 10s linear infinite reverse;
+}
+
+@keyframes rotate-bg {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.hamburger-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  width: 30px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  //   background-color: white;
+  @include respond-to(desktop) {
+    top: 70%;
+  }
+}
+
+.hamburger-menu .bar1,
+.hamburger-menu .bar2,
+.hamburger-menu .bar3 {
+  height: 4px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu .bar1 {
+  transform-origin: top left;
+}
+
+.hamburger-menu .bar3 {
+  transform-origin: bottom left;
+}
+
+.hamburger-menu.open .bar1 {
+  transform: rotate(45deg) translate(5px, -5px);
+}
+
+.hamburger-menu.open .bar2 {
+  opacity: 0;
+}
+
+.hamburger-menu.open .bar3 {
+  transform: rotate(-45deg) translate(5px, 5px);
+}

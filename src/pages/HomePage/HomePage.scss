@@ -1,0 +1,188 @@
+@import '../../components/mixins.scss';
+
+.home-bg {
+  --s: 50px;
+  --c: #191b22;
+  --_s: calc(2 * var(--s)) calc(2 * var(--s));
+  --_g: 35.36% 35.36% at;
+  --_c: #0000 66%, #20222a 68% 70%, #0000 72%;
+  background:
+    radial-gradient(var(--_g) 100% 25%, var(--_c)) var(--s) var(--s) / var(--_s),
+    radial-gradient(var(--_g) 0 75%, var(--_c)) var(--s) var(--s) / var(--_s),
+    radial-gradient(var(--_g) 100% 25%, var(--_c)) 0 0 / var(--_s),
+    radial-gradient(var(--_g) 0 75%, var(--_c)) 0 0 / var(--_s),
+    repeating-conic-gradient(var(--c) 0 25%, #0000 0 50%) 0 0 / var(--_s),
+    radial-gradient(var(--_c)) 0 calc(var(--s) / 2) / var(--s) var(--s) var(--c);
+  background-attachment: fixed;
+}
+
+.home-header {
+  transition: background-color 0.5s ease;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+  & .logo-and-name {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 5px;
+
+    .logo {
+      padding-top: 10px;
+      width: 60px;
+      transition: all 0.5s ease;
+      opacity: 1;
+      &.scrolled {
+        padding-top: 0px;
+        width: 30px;
+      }
+      &.hidden {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      @include respond-to(desktop) {
+        width: 160px;
+        &.scrolled {
+          padding-top: 0px;
+          width: 130px;
+        }
+      }
+      @include respond-to(tablet) {
+        width: 200px;
+        &.scrolled {
+          padding-top: 0px;
+          width: 110px;
+        }
+        &.hidden {
+          opacity: 0;
+          transition: opacity 0.5s ease;
+        }
+      }
+    }
+    .name {
+      font-weight: 200;
+      font-style: italic;
+      font-size: 12pt;
+    }
+  }
+  .lat-long {
+    color: white;
+    transform: rotate(-90deg);
+    display: grid;
+    margin-top: 30px;
+    text-align: right;
+    padding: 10px;
+    @include respond-to(desktop) {
+      padding-right: 45px;
+    }
+    span {
+      font-style: italic;
+      font-size: 12pt;
+      @include respond-to(desktop) {
+        font-size: 20pt;
+        // padding: 10px;
+      }
+    }
+  }
+}
+
+.above-the-fold {
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background-color: transparent;
+  align-items: end;
+
+  .hero-text {
+    border-top: 3px solid green;
+    margin-bottom: 50px;
+    .hero-title {
+      padding-left: 10px;
+      font-size: 60pt;
+      font-weight: 700;
+      font-family: Montagu Slab Variable;
+    }
+    .subscript {
+      font-size: 30pt;
+      font-weight: 400;
+    }
+    .subtitle {
+      padding-left: 10px;
+      font-size: 14pt;
+      font-weight: 300;
+    }
+  }
+}
+
+.footer {
+  background-color: #ffff0029;
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  justify-content: start;
+  gap: 10px;
+  span {
+    font-size: 10px;
+    margin-left: 15px;
+  }
+}
+
+.footer .logo {
+  width: 90px;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  &.show {
+    opacity: 1;
+    transition-delay: 0.3s;
+  }
+}
+
+.footer .lat-long {
+  display: grid;
+  grid-template-rows: auto auto;
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  &.show {
+    opacity: 1;
+  }
+
+  &:nth-of-type(1) {
+    transition-delay: 0.6s;
+  }
+  &:nth-of-type(2) {
+    transition-delay: 0.9s;
+  }
+}
+
+.sales-copy {
+  height: fit-content;
+  display: grid;
+  padding-left: 10px;
+  padding-bottom: 50px;
+  margin: 0 auto;
+
+  p {
+    font-size: 20pt;
+  }
+  @include respond-to(desktop) {
+    width: 50%;
+    // margin: 0 auto;
+    // text-align: center;
+  }
+}
+// @include respond-to(tablet) {
+// }
+
+// @include respond-to(desktop) {
+//   .home-header {
+//     .logo {
+//       width: 90px;
+//     }
+//   }
+// }

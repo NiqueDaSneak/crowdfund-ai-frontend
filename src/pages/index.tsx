@@ -4,22 +4,16 @@ import type { HeadFC, PageProps } from 'gatsby';
 import '../components/index.scss';
 import { tabsConfig, TabConfig } from '../config/tabConfig';
 import BottomNav from '../components/BottomNav/BottomNav';
-
+import HomePage from './HomePage/HomePage';
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
+    <div>
       <Routes>
-        <Route path="/" element={<Navigate to="/heading" replace />} />
+        <Route path="/" element={<HomePage />} />
+        {/* <Route path="/" element={<Navigate to="/heading" replace />} />
         {tabsConfig.map((tab: TabConfig) => (
           <Route key={tab.id} path={tab.path} element={tab.element} />
-        ))}
+        ))} */}
       </Routes>
     </div>
   );
