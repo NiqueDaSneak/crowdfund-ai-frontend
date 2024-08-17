@@ -9,7 +9,7 @@ interface CampaignFormProps {
   section: Section;
   sectionData: string;
   onSectionDataChange: (value: string) => void;
-  handleSubmit: (section: Section) => void;
+  handleSubmit: (section: 'heading' | 'subheading' | 'story') => void;
 }
 
 const CampaignForm: React.FC<CampaignFormProps> = ({
@@ -39,7 +39,14 @@ const CampaignForm: React.FC<CampaignFormProps> = ({
           </div>
         )}
       </span>
-      <form onSubmit={() => handleSubmit(section)}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit(
+            section.title.toLowerCase() as 'heading' | 'subheading' | 'story',
+          );
+        }}
+      >
         <textarea
           maxLength={section.maxLength}
           className="form-input"

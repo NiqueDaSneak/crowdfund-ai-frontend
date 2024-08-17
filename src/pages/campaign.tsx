@@ -4,6 +4,7 @@ import Button from '../components/Button/Button';
 import HelperSection from '../components/HelperSection/HelperSection';
 import CampaignForm from '../components/CampaignForm/CampaignForm';
 import CampaignOverview from '../components/CampaignOverview/CampaginOverview';
+import { processContent } from '../api/recommendationsAPI';
 
 export interface Section {
   id: number;
@@ -81,18 +82,31 @@ const CampaignPage = () => {
     setSectionData(updatedData);
   };
 
-  const handleSubmit = () => {
-    const categories = sectionData[0];
-    const formDataArray: FormData[] = sections
-      .slice(1)
-      .map((section, index) => ({
-        dataType: section.title.toLowerCase(),
-        dataBody: sectionData[section.id],
-        categories,
-      }));
+  const handleSubmit = async (
+    whatSection: 'heading' | 'subheading' | 'story',
+  ) => {
+    try {
+      const categories = sectionData[0]; // Get the categories data from the first section
 
-    // Here you would send `formDataArray` to your API
-    console.log('Data to send:', formDataArray);
+      // Find the correct section data based on whatSection
+      const sectionIndex = sections.findIndex(
+        (section) => section.title.toLowerCase() === whatSection,
+      );
+
+      if (sectionIndex === -1) {
+        console.error('Invalid section specified');
+        return;
+      }
+
+      const dataType = sections[sectionIndex].title.toLowerCase();
+      const dataBody = sectionData[sectionIndex];
+
+      // Call the processContent function with the appropriate data
+      const response = await processContent(dataType, dataBody, categories);
+      console.log('API Response:', response);
+    } catch (error) {
+      console.error('Error submitting content:', error);
+    }
   };
 
   const hasCategories = sectionData[0] !== ''; // Check if "Categories" section has data
