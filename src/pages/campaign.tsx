@@ -112,6 +112,7 @@ const CampaignPage = () => {
             section={sections[openForm]}
             sectionData={sectionData[openForm]}
             onSectionDataChange={(value) => handleChange(openForm, value)}
+            handleSubmit={handleSubmit}
           />
         ) : sectionData.some((data) => data !== '') ? (
           <CampaignOverview sectionData={sectionData} sections={sections} />
