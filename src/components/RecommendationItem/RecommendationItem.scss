@@ -1,0 +1,16 @@
+.recommendation-item {
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.4;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,12 +1,14 @@
 import React from 'react';
+import { AiOutlineLoading } from 'react-icons/ai';
 
 interface ButtonProps {
-  label: string;
+  label?: string;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   style?: React.CSSProperties;
   disabled?: boolean;
   className?: string;
+  isLoading?: boolean; // Add loading state
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,18 +18,25 @@ const Button: React.FC<ButtonProps> = ({
   style,
   disabled = false,
   className,
+  isLoading = false, // Default to false
   ...rest
 }) => {
   return (
     <button
       {...rest}
       type={type}
-      className={`button ${className ? className : ''}`}
+      className={`button ${className ? className : ''} ${
+        isLoading ? 'loading' : ''
+      }`}
       onClick={onClick}
       style={style}
-      disabled={disabled}
+      disabled={disabled || isLoading} // Disable when loading
     >
-      {label}
+      {isLoading ? (
+        <AiOutlineLoading className="fetch-spinner" />
+      ) : (
+        <span className="button-label">{label}</span>
+      )}
     </button>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaLightbulb, FaInfoCircle } from 'react-icons/fa'; // Icon for the tooltip
+import { FaLightbulb, FaInfoCircle } from 'react-icons/fa';
 
 const HelperSection = () => {
   return (

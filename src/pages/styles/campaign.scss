@@ -1,3 +1,7 @@
+$focus-border-color: #444cf7;
+$border-radius: 5px;
+$transition-ease: 0.3s ease;
+
 @import '../../components/mixins.scss';
 
 @keyframes slideUp {
@@ -116,7 +120,7 @@
     padding: 10px;
     height: fit-content;
     justify-items: center;
-    gap: 20px;
+    // gap: 20px;
     @include respond-to(desktop) {
       width: 400px;
       margin: 0 auto;

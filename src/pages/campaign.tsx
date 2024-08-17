@@ -5,6 +5,7 @@ import HelperSection from '../components/HelperSection/HelperSection';
 import CampaignForm from '../components/CampaignForm/CampaignForm';
 import CampaignOverview from '../components/CampaignOverview/CampaginOverview';
 import { processContent } from '../api/recommendationsAPI';
+import RecommendationsModal from '../components/RecommendationsModal/RecommendationsModal';
 
 export interface Section {
   id: number;
@@ -51,10 +52,19 @@ interface FormData {
   categories: string;
 }
 
+interface RecommendationsState {
+  [key: string]: string[]; // key is dataType, value is array of recommendations
+}
+
 const CampaignPage = () => {
   const [openForm, setOpenForm] = useState<number | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [sectionData, setSectionData] = useState<string[]>(['', '', '', '']); // Updated for 4 sections
+  const [sectionData, setSectionData] = useState<string[]>(['', '', '', '']);
+  const [recommendations, setRecommendations] = useState<RecommendationsState>(
+    {},
+  );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // New loading state
 
   const handleOpenForm = (index: number) => {
     if (openForm !== null) {
@@ -62,7 +72,7 @@ const CampaignPage = () => {
       setTimeout(() => {
         setOpenForm(index);
         setIsAnimating(false);
-      }, 300); // Match this with the animation duration
+      }, 300);
     } else {
       setOpenForm(index);
     }
@@ -73,7 +83,7 @@ const CampaignPage = () => {
     setTimeout(() => {
       setOpenForm(null);
       setIsAnimating(false);
-    }, 300); // Match this with the animation duration
+    }, 300);
   };
 
   const handleChange = (index: number, value: string) => {
@@ -82,13 +92,11 @@ const CampaignPage = () => {
     setSectionData(updatedData);
   };
 
-  const handleSubmit = async (
-    whatSection: 'heading' | 'subheading' | 'story',
-  ) => {
-    try {
-      const categories = sectionData[0]; // Get the categories data from the first section
+  const handleSubmit = async (whatSection: string) => {
+    setIsLoading(true); // Start loading
 
-      // Find the correct section data based on whatSection
+    try {
+      const categories = sectionData[0];
       const sectionIndex = sections.findIndex(
         (section) => section.title.toLowerCase() === whatSection,
       );
@@ -100,16 +108,28 @@ const CampaignPage = () => {
 
       const dataType = sections[sectionIndex].title.toLowerCase();
       const dataBody = sectionData[sectionIndex];
-
-      // Call the processContent function with the appropriate data
+      console.log('Submitting section:', whatSection, 'as', dataType);
       const response = await processContent(dataType, dataBody, categories);
-      console.log('API Response:', response);
+      console.log({ response });
+      setRecommendations((prev) => ({
+        ...prev,
+        [dataType]: response.recommendations,
+      }));
+      setIsModalOpen(true);
     } catch (error) {
       console.error('Error submitting content:', error);
+    } finally {
+      setIsLoading(false); // Stop loading
     }
   };
 
-  const hasCategories = sectionData[0] !== ''; // Check if "Categories" section has data
+  const handleViewRecommendations = () => {
+    setIsModalOpen(true);
+  };
+
+  const hasCategories = sectionData[0] !== '';
+  const currentDataType =
+    openForm !== null ? sections[openForm].title.toLowerCase() : '';
 
   return (
     <main className="campaign-container">
@@ -121,12 +141,20 @@ const CampaignPage = () => {
       <section>
         {openForm !== null ? (
           <CampaignForm
+            isLoading={isLoading}
             isAnimating={isAnimating}
             handleCloseForm={handleCloseForm}
             section={sections[openForm]}
             sectionData={sectionData[openForm]}
             onSectionDataChange={(value) => handleChange(openForm, value)}
-            handleSubmit={handleSubmit}
+            handleSubmit={() => {
+              if (recommendations[currentDataType]) {
+                handleViewRecommendations();
+              } else {
+                handleSubmit(currentDataType);
+              }
+            }}
+            hasRecommendations={!!recommendations[currentDataType]}
           />
         ) : sectionData.some((data) => data !== '') ? (
           <CampaignOverview sectionData={sectionData} sections={sections} />
@@ -147,16 +175,18 @@ const CampaignPage = () => {
               className={
                 isAnimating && openForm === section.id ? 'fade-out' : ''
               }
-              disabled={!hasCategories && section.id !== 0} // Disable other buttons if no Categories data
+              disabled={!hasCategories && section.id !== 0}
             />
           ) : null,
         )}
       </section>
 
-      {/* You can add a submit button for the entire form
-      {sectionData.some((data) => data !== '') && (
-        <Button label="Submit Campaign" onClick={handleSubmit} />
-      )} */}
+      {isModalOpen && (
+        <RecommendationsModal
+          recommendations={recommendations[currentDataType]}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </main>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button';
 import { Section } from '../../pages/campaign';
-import { FaInfoCircle } from 'react-icons/fa'; // Import the info icon
+import { FaInfoCircle } from 'react-icons/fa';
 
 interface CampaignFormProps {
   isAnimating: boolean;
@@ -9,7 +9,9 @@ interface CampaignFormProps {
   section: Section;
   sectionData: string;
   onSectionDataChange: (value: string) => void;
-  handleSubmit: (section: 'heading' | 'subheading' | 'story') => void;
+  handleSubmit: () => void;
+  hasRecommendations: boolean;
+  isLoading: boolean;
 }
 
 const CampaignForm: React.FC<CampaignFormProps> = ({
@@ -19,6 +21,8 @@ const CampaignForm: React.FC<CampaignFormProps> = ({
   sectionData,
   onSectionDataChange,
   handleSubmit,
+  hasRecommendations,
+  isLoading,
 }) => {
   return (
     <div className={`form-container ${isAnimating ? 'fade-out' : 'fade-in'}`}>
@@ -26,27 +30,20 @@ const CampaignForm: React.FC<CampaignFormProps> = ({
         X
       </button>
       <span className="form-title">{section.title}</span>
-      <span className="form-subheading">
-        {section.subheading}
+      <aside style={{ display: 'flex' }}>
+        <span className="form-subheading">{section.subheading}</span>
         {section.title === 'Categories' && (
-          <div className="tooltip-container">
+          <span className="tooltip-container">
             <FaInfoCircle className="info-icon" />
             <div className="tooltip-text">
               Add categories related to your campaign, such as "technology,"
               "health," or "education." This will help us provide more relevant
               recommendations.
             </div>
-          </div>
+          </span>
         )}
-      </span>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSubmit(
-            section.title.toLowerCase() as 'heading' | 'subheading' | 'story',
-          );
-        }}
-      >
+      </aside>
+      <form>
         <textarea
           maxLength={section.maxLength}
           className="form-input"
@@ -58,10 +55,17 @@ const CampaignForm: React.FC<CampaignFormProps> = ({
           {sectionData.length}/{section.maxLength} characters
         </div>
         {section.title !== 'Categories' && (
-          <Button label="Get Reccomendations" type="submit" />
+          <Button
+            isLoading={isLoading}
+            label={
+              hasRecommendations
+                ? 'View Recommendations'
+                : 'Get Recommendations'
+            }
+            onClick={handleSubmit}
+            type="button"
+          />
         )}
-        {/* {section.title === 'Categories' && (
-        )} */}
       </form>
     </div>
   );

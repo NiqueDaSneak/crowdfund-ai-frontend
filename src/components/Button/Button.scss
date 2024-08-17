@@ -1,24 +1,75 @@
 .button {
-  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: #ffffff;
   border: none;
-  padding: 0.75rem 1.5rem;
+  padding: 10px;
   font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    width 1s ease,
+    padding 0.3s ease;
   font-weight: 500;
   background-color: rgba(3, 177, 3, 0.774);
+  max-height: 46px;
+  // min-width: 46px;
+  overflow: hidden;
+
   &:hover {
     background-color: green;
   }
+
   &:disabled {
-    background-color: rgba(
-      119,
-      119,
-      119,
-      0.658
-    ); /* Lighter background for disabled state */
+    background-color: rgba(119, 119, 119, 0.658);
     cursor: not-allowed;
+  }
+
+  &.loading {
+    // width: 46px;
+    transition: width 1s ease;
+    padding: 10px;
+    animation: pulse 1s infinite;
+  }
+
+  .fetch-spinner {
+    animation: spin 1.4s cubic-bezier(0.43, 0.84, 0.61, 0.14) infinite;
+    color: black;
+  }
+
+  .button-label {
+    transition: opacity 0.3s ease;
+  }
+
+  &.loading .button-label {
+    opacity: 0; // Hide the label only
+    visibility: hidden;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(2520deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    background-color: #ffbf00;
+  }
+  50% {
+    transform: scale(1.05);
+    background-color: #ffd700;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #ffbf00;
   }
 }

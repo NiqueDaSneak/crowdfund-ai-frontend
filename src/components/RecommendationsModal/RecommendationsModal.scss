@@ -1,0 +1,78 @@
+.rec-modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: transparent;
+  z-index: 1000;
+  animation: slideUp 0.4s ease-in-out forwards; /* Slide up animation */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(40px); /* Start with no blur */
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  &.blurred {
+    animation: blurEffect 0.6s forwards; /* Trigger blur animation */
+  }
+}
+
+.rec-modal-content {
+  // padding: 20px;
+  // max-height: 80vh;
+  // overflow-y: auto;
+  width: 80%;
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .helper-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: transparent;
+  }
+
+  .recommendations-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .helper-icon {
+    font-size: 20pt;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes blurEffect {
+  from {
+    backdrop-filter: blur(0px); /* No blur at the start */
+  }
+  to {
+    backdrop-filter: blur(80px); /* Full blur at the end */
+  }
+}
