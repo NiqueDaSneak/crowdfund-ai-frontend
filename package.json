@@ -14,7 +14,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "develop:mobile": "./start-gatsby-ngrok.sh"
+    "develop:mobile": "./start-gatsby-ngrok.sh",
+    "develop:ip": "gatsby develop -H $(ipconfig getifaddr en0) -p 8000"
   },
   "dependencies": {
     "@fontsource-variable/montagu-slab": "^5.0.20",

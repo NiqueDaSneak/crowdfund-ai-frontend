@@ -1,79 +1,70 @@
 import React, { useState } from 'react';
+import compass from '../images/compass.svg';
+import Button from '../components/Button/Button';
 
 const CampaignPage = () => {
   const [openForm, setOpenForm] = useState<number | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [previousForm, setPreviousForm] = useState<number | null>(null);
 
   const handleOpenForm = (index: number) => {
-    setOpenForm(index);
+    if (openForm !== null) {
+      setIsAnimating(true);
+      setPreviousForm(openForm);
+      setTimeout(() => {
+        setOpenForm(index);
+        setIsAnimating(false);
+      }, 300); // Match this with the animation duration
+    } else {
+      setOpenForm(index);
+    }
   };
 
   const handleCloseForm = () => {
-    setOpenForm(null);
+    setIsAnimating(true);
+    setTimeout(() => {
+      setOpenForm(null);
+      setIsAnimating(false);
+    }, 300); // Match this with the animation duration
   };
 
   return (
-    <main
-      style={{
-        display: 'grid',
-        gridTemplateRows: 'auto auto',
-        height: '100dvh',
-      }}
-    >
-      <section style={{ backgroundColor: 'purple', position: 'relative' }}>
+    <main className="campaign-container">
+      <header>
+        <img className="logo" src={compass} alt="Compass Logo" />
+        <span>Scout.ai</span>
+      </header>
+
+      <section>
         {openForm !== null && (
           <div
-            style={{
-              color: 'black',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'white',
-              borderRadius: '10px',
-              margin: '10px',
-              padding: '20px',
-              zIndex: 1,
-              animation: 'slideUp 0.5s ease-out',
-            }}
+            className={`form-container ${isAnimating ? 'fade-out' : 'fade-in'}`}
           >
-            <button
-              onClick={handleCloseForm}
-              style={{ position: 'absolute', top: '10px', right: '10px' }}
-            >
+            <button className="close-btn" onClick={handleCloseForm}>
               X
             </button>
             <h2>Form {openForm + 1}</h2>
             <p>This is the form content for button {openForm + 1}.</p>
+            <form>
+              <textarea
+                className="form-input"
+                placeholder="Enter code here..."
+              />
+              <Button label="Submit" type="submit" />
+            </form>
           </div>
         )}
       </section>
 
-      <section
-        style={{
-          backgroundColor: 'pink',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: '20px',
-        }}
-      >
+      <section className="form-toggles">
         {[0, 1, 2].map((index) =>
           openForm !== index ? (
-            <div
-              key={index}
+            <Button
               onClick={() => handleOpenForm(index)}
-              style={{
-                backgroundColor: 'red',
-                width: 'fit-content',
-                padding: '10px',
-                borderRadius: '10px',
-                marginBottom: '10px',
-                cursor: 'pointer',
-              }}
-            >
-              <span>Button {index + 1}</span>
-            </div>
+              key={index}
+              label={`Button ${index + 1}`}
+              className={isAnimating && openForm === index ? 'fade-out' : ''}
+            />
           ) : null,
         )}
       </section>

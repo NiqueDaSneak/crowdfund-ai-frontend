@@ -1,0 +1,23 @@
+.button {
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+  background-color: rgba(3, 177, 3, 0.774);
+  &:hover {
+    background-color: green;
+  }
+  &:disabled {
+    background-color: rgba(
+      3,
+      177,
+      3,
+      0.5
+    ); /* Lighter background for disabled state */
+    cursor: not-allowed;
+  }
+}
