@@ -1,0 +1,116 @@
+$focus-border-color: #444cf7;
+$border-radius: 5px;
+$transition-ease: 0.3s ease;
+
+.form-container {
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px;
+  z-index: 1;
+  height: fit-content;
+  border: 1px solid white;
+  animation: slideUp $transition-ease forwards;
+  display: grid;
+  gap: 10px;
+  backdrop-filter: blur(6px);
+  @include respond-to(desktop) {
+    width: 800px;
+    margin: 0 auto;
+  }
+
+  &.fade-out {
+    animation: fadeOut $transition-ease forwards;
+  }
+
+  &.fade-in {
+    animation: fadeIn $transition-ease forwards;
+  }
+
+  .close-btn {
+    top: 10px;
+    right: 10px;
+    width: 100%;
+    text-align: right;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  .form-title {
+    margin: 0;
+    font-size: 20pt;
+    font-weight: 700;
+  }
+
+  .form-subheading {
+    font-size: 16pt;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+
+    .tooltip-container {
+      position: relative;
+      display: inline-block;
+      margin-left: 8px;
+
+      .info-icon {
+        font-size: 16px;
+        color: white;
+        cursor: pointer;
+      }
+
+      .tooltip-text {
+        visibility: hidden;
+        background-color: #444cf7;
+        color: white;
+        text-align: center;
+        padding: 8px;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 100;
+        top: 50%;
+        right: calc(100% + 10px); /* Position to the left of the icon */
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 100%; /* Position arrow on the right of the tooltip */
+          transform: translateY(-50%);
+          border-width: 5px;
+          border-style: solid;
+          border-color: transparent transparent transparent #444cf7;
+        }
+      }
+
+      &:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  form {
+    text-align: right;
+  }
+
+  .form-input {
+    font-size: 16pt;
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    resize: vertical;
+    margin-bottom: 10px;
+
+    &:focus {
+      border-color: $focus-border-color;
+    }
+  }
+}
