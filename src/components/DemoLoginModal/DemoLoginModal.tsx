@@ -12,13 +12,16 @@ const DemoLoginModal = () => {
     setSuccess(null);
 
     try {
-      const response = await fetch('/.netlify/functions/verifyInviteCode', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://scoutai.netlify.app/.netlify/functions/verifyInviteCode',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ code }),
         },
-        body: JSON.stringify({ code }),
-      });
+      );
 
       const result = await response.json();
 

@@ -399,19 +399,20 @@ export const getRecommendations = async (
   return recommendations;
 };
 
-const BASE_URL = 'http://127.0.0.1:5000';
-
 export const processContent = async (
   dataType: string,
   dataBody: string,
   categories: string,
 ) => {
   try {
-    const response = await axios.post(`${BASE_URL}/process`, {
-      dataType,
-      dataBody,
-      categories,
-    });
+    const response = await axios.post(
+      'https://thisisdom4.pythonanywhere.com/process',
+      {
+        dataType,
+        dataBody,
+        categories,
+      },
+    );
     return response.data;
   } catch (error) {
     console.error('Error processing content:', error);
