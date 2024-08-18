@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import type { HeadFC, PageProps } from 'gatsby';
 import compass from '../images/compass.svg';
 import Button from '../components/Button/Button';
 import HelperSection from '../components/HelperSection/HelperSection';
@@ -56,7 +57,7 @@ interface RecommendationsState {
   [key: string]: string[]; // key is dataType, value is array of recommendations
 }
 
-const CampaignPage = () => {
+const CampaignPage = (props: PageProps) => {
   const [openForm, setOpenForm] = useState<number | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [sectionData, setSectionData] = useState<string[]>(['', '', '', '']);
@@ -192,3 +193,4 @@ const CampaignPage = () => {
 };
 
 export default CampaignPage;
+export const Head: HeadFC = () => <title>Scout.ai: Insight Compass</title>;

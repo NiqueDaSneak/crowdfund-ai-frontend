@@ -2,9 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import type { HeadFC, PageProps } from 'gatsby';
 import '../components/index.scss';
-// import { tabsConfig, TabConfig } from '../config/tabConfig';
-// import BottomNav from '../components/BottomNav/Bottom
-
 import compass from '../images/compass.svg';
 import AnimatedChevron from '../components/AnimatedChevron/AnimatedChevron';
 import RotatingActionButton from '../components/RotatingActionButton/RotatingActionButton';
@@ -124,4 +121,4 @@ const IndexPage = (props: PageProps) => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => <title>Scout.ai</title>;
