@@ -56,6 +56,7 @@ const CampaignForm: React.FC<CampaignFormProps> = ({
         </div>
         {section.title !== 'Categories' && (
           <Button
+            disabled={sectionData.length < 10}
             isLoading={isLoading}
             label={
               hasRecommendations

@@ -11,17 +11,19 @@ const DemoLoginModal = () => {
     setError(null);
     setSuccess(null);
 
+    const isDev = process.env.NODE_ENV === 'development';
+    const functionUrl = isDev
+      ? '/.netlify/functions/verifyInviteCode'
+      : 'https://scoutai.netlify.app/.netlify/functions/verifyInviteCode';
+
     try {
-      const response = await fetch(
-        'https://scoutai.netlify.app/.netlify/functions/verifyInviteCode',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ code }),
+      const response = await fetch(functionUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      );
+        body: JSON.stringify({ code }),
+      });
 
       const result = await response.json();
 

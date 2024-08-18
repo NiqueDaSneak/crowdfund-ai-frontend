@@ -16,8 +16,11 @@
   font-weight: 500;
   background-color: rgba(3, 177, 3, 0.774);
   max-height: 46px;
-  // min-width: 46px;
   overflow: hidden;
+  min-width: 100px;
+  @include respond-to(desktop) {
+    min-width: 140px;
+  }
 
   &:hover {
     background-color: green;

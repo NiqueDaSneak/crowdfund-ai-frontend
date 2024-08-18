@@ -1,16 +1,52 @@
 .recommendation-item {
-  background-color: #f7f7f7;
-  border: 1px solid #ddd;
+  background-color: black;
   margin-bottom: 30px;
   border-radius: 5px;
   padding: 20px;
   font-size: 16px;
   line-height: 1.4;
-  color: black;
+  color: white;
   display: flex;
   justify-content: space-between;
-
+  span {
+    font-weight: 600;
+  }
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+.tooltip {
+  position: absolute;
+  width: 240px;
+  background-color: #333;
+  color: white;
+  text-align: left;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 100;
+  @include respond-to(desktop) {
+    font-size: 14pt;
+  }
+}
+
+.tooltip::before {
+  z-index: 900;
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -12px; /* Aligns the tooltip to the left */
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #333;
+}
+
+.rec-icon {
+  animation: pulse 1s infinite;
+  background-color: transparent !important;
 }

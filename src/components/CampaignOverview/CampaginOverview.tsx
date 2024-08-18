@@ -1,52 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Section } from '../../pages/campaign';
 
 interface CampaignOverviewProps {
   sections: Section[];
   sectionData: string[];
+  recommendations: { [key: string]: string[] };
 }
 
 const CampaignOverview: React.FC<CampaignOverviewProps> = ({
   sections,
   sectionData,
+  recommendations,
 }) => {
-  const filledSections = sections.filter((_, index) => sectionData[index]);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const handleDotClick = (index: number) => {
-    setActiveIndex(index);
-  };
-
   return (
-    <div className="campaign-overview">
-      {/* <div className="stacked-card-container">
-        {filledSections.map((section, index) => (
-          <div
-            key={section.id}
-            className={`campaign-card ${activeIndex === index ? 'active' : ''}`}
-            style={{
-              zIndex: filledSections.length - index,
-            }}
-          >
-            <h3>{section.title}</h3>
-            <div className="card-content">
-              <p>{sectionData[sections.indexOf(section)]}</p>
+    <>
+      <p className="header" style={{}}>
+        Your Campaign
+      </p>
+      <div className="campaign-overview">
+        {sections.map((section, index) => {
+          const recCount =
+            recommendations[section.title.toLowerCase()]?.length || 0;
+
+          return (
+            <div key={section.id} className="section-overview">
+              <span className="section-title">{section.title}</span>
+              <span className="recommendation-count">
+                Recommendations: <strong>{recCount}</strong>
+              </span>
             </div>
-          </div>
-        ))}
-      </div> */}
-      {/* {filledSections.length > 1 && (
-        <div className="dots">
-          {filledSections.map((_, index) => (
-            <span
-              key={index}
-              className={`dot ${activeIndex === index ? 'active' : ''}`}
-              onClick={() => handleDotClick(index)}
-            ></span>
-          ))}
-        </div>
-      )} */}
-    </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 

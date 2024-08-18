@@ -92,7 +92,6 @@ const CampaignPage = (props: PageProps) => {
     updatedData[index] = value;
     setSectionData(updatedData);
   };
-
   const handleSubmit = async (whatSection: string) => {
     setIsLoading(true); // Start loading
 
@@ -158,7 +157,11 @@ const CampaignPage = (props: PageProps) => {
             hasRecommendations={!!recommendations[currentDataType]}
           />
         ) : sectionData.some((data) => data !== '') ? (
-          <CampaignOverview sectionData={sectionData} sections={sections} />
+          <CampaignOverview
+            sectionData={sectionData}
+            sections={sections}
+            recommendations={recommendations}
+          />
         ) : (
           <HelperSection />
         )}
@@ -167,19 +170,27 @@ const CampaignPage = (props: PageProps) => {
       <section
         className={`form-toggles ${openForm !== null ? 'form-open' : ''}`}
       >
-        {sections.map((section) =>
-          openForm !== section.id ? (
-            <Button
-              onClick={() => handleOpenForm(section.id)}
-              key={section.id}
-              label={section.title}
-              className={
-                isAnimating && openForm === section.id ? 'fade-out' : ''
-              }
-              disabled={!hasCategories && section.id !== 0}
-            />
-          ) : null,
-        )}
+        {sections.map((section) => {
+          const hasData = sectionData[section.id] !== '';
+          return openForm !== section.id ? (
+            <div className="button-wrapper" style={{ position: 'relative' }}>
+              {hasData && (
+                <div
+                  className={`highlight-line ${recommendations[section.title.toLowerCase()] ? 'gold' : ''}`}
+                ></div>
+              )}
+              <Button
+                key={section.id}
+                label={section.title}
+                onClick={() => handleOpenForm(section.id)}
+                className={
+                  isAnimating && openForm === section.id ? 'fade-out' : ''
+                }
+                disabled={!hasCategories && section.id !== 0}
+              />
+            </div>
+          ) : null;
+        })}
       </section>
 
       {isModalOpen && (
