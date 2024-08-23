@@ -13,7 +13,7 @@ const DemoLoginModal = () => {
 
     const isDev = process.env.NODE_ENV === 'development';
     const functionUrl = isDev
-      ? '/.netlify/functions/verifyInviteCode'
+      ? 'http://localhost:63150/.netlify/functions/verifyInviteCode'
       : 'https://scoutai.netlify.app/.netlify/functions/verifyInviteCode';
 
     try {
@@ -29,7 +29,7 @@ const DemoLoginModal = () => {
 
       if (result.success) {
         setSuccess(result.message);
-        navigate('/campaign');
+        navigate('/products-overview');
       } else {
         setError(result.message);
       }

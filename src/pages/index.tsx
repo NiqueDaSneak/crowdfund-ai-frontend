@@ -2,11 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import type { HeadFC, PageProps } from 'gatsby';
 import '../components/index.scss';
-import compass from '../images/compass.svg';
+import logo from '../images/scout-logo.svg';
 import AnimatedChevron from '../components/AnimatedChevron/AnimatedChevron';
 import RotatingActionButton from '../components/RotatingActionButton/RotatingActionButton';
 import useIsVisible from '../utils/useIsVisible';
 import DemoLoginModal from '../components/DemoLoginModal/DemoLoginModal';
+import PageHeader from '../components/PageHeader/PageHeader';
 
 const IndexPage = (props: PageProps) => {
   const footerRef = useRef<HTMLDivElement>(null);
@@ -46,21 +47,7 @@ const IndexPage = (props: PageProps) => {
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
       />
-
-      <header className={`home-header ${isScrolled ? 'scrolled' : ''} `}>
-        <section className="logo-and-name">
-          <img
-            className={`logo ${isScrolled ? 'scrolled' : ''} ${isFooterVisible ? 'hidden' : ''}`}
-            src={compass}
-            alt="Compass Logo"
-          />
-        </section>
-        <section className="lat-long">
-          <span>φ 37.3894° N</span>
-          <span>λ 122.0819° W</span>
-        </section>
-      </header>
-
+      <PageHeader />
       <section className="home-bg">
         <div className="above-the-fold">
           <div className="hero-text">
@@ -98,11 +85,12 @@ const IndexPage = (props: PageProps) => {
           </p>
         </main>
         <footer className="footer" ref={footerRef}>
-          <img
+          {/* <img
             className={`logo ${isFooterVisible ? 'show' : ''}`}
-            src={compass}
+            src={logo}
             alt="Footer Compass Logo"
-          />
+          /> */}
+          <span style={{ fontSize: '40px' }}>🚀</span>
           <div className={`lat-long ${isFooterVisible ? 'show' : ''}`}>
             <span>φ 39.1031° N</span>
             <span>λ 84.5120° W</span>

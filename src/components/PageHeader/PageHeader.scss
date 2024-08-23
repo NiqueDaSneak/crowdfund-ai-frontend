@@ -1,0 +1,73 @@
+.home-header {
+  transition: background-color 0.5s ease;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+  & .logo-and-name {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 5px;
+
+    .logo {
+      padding-top: 10px;
+      width: 60px;
+      transition: all 0.5s ease;
+      opacity: 1;
+      &.scrolled {
+        padding-top: 0px;
+        width: 30px;
+      }
+      &.hidden {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      @include respond-to(desktop) {
+        width: 160px;
+        &.scrolled {
+          padding-top: 0px;
+          width: 130px;
+        }
+      }
+      @include respond-to(tablet) {
+        width: 200px;
+        &.scrolled {
+          padding-top: 0px;
+          width: 110px;
+        }
+        &.hidden {
+          opacity: 0;
+          transition: opacity 0.5s ease;
+        }
+      }
+    }
+    .name {
+      font-weight: 200;
+      font-style: italic;
+      font-size: 12pt;
+    }
+  }
+  .lat-long {
+    color: white;
+    transform: rotate(-90deg);
+    display: grid;
+    margin-top: 30px;
+    text-align: right;
+    padding: 10px;
+    @include respond-to(desktop) {
+      padding-right: 45px;
+    }
+    span {
+      font-style: italic;
+      font-size: 12pt;
+      @include respond-to(desktop) {
+        font-size: 20pt;
+        // padding: 10px;
+      }
+    }
+  }
+}

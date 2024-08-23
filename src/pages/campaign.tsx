@@ -134,7 +134,9 @@ const CampaignPage = (props: PageProps) => {
   return (
     <main className="campaign-container">
       <header>
-        <img className="logo" src={compass} alt="Compass Logo" />
+        {/* <img src={compass} alt="Compass Logo" />
+         */}
+        <span className="logo">🚀</span>
         <span>Scout.ai</span>
       </header>
 
