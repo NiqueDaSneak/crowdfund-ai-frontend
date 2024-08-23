@@ -4,7 +4,7 @@ export const handler: Handler = async (event, context) => {
   const { code } = JSON.parse(event.body || '{}');
 
   // Example logic: Validate the invite code
-  const validCodes = ['peter999', 'dom999', 'mjm999', 'peppe999']; // Replace with your actual validation logic
+  const validCodes = ['ycdemo999']; // Replace with your actual validation logic
 
   if (validCodes.includes(code)) {
     return {
