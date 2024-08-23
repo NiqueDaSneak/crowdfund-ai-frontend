@@ -1,4 +1,4 @@
-import { navigate, PageProps } from 'gatsby';
+import { HeadFC, navigate, PageProps } from 'gatsby';
 import React from 'react';
 import Button from '../components/Button/Button';
 import { FaInfoCircle } from 'react-icons/fa'; // Import the icon
@@ -117,3 +117,5 @@ const ProductOverviewPage = (props: PageProps) => {
 };
 
 export default ProductOverviewPage;
+
+export const Head: HeadFC = () => <title>Scout.ai: Products</title>;
