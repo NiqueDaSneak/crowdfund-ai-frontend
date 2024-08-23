@@ -9,6 +9,7 @@
   height: 10dvh;
   flex-direction: column;
   justify-content: center;
+  background-color: #303030;
 }
 
 .header-title {
@@ -23,7 +24,13 @@
 
 .box {
   position: relative;
-  overflow: hidden;
+  //   overflow: hidden;
+  @include respond-to(desktop) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
 
   /* Pseudo-element for the background image */
   &::before {
@@ -51,6 +58,9 @@
     margin: 5px;
     border-radius: 10px;
     padding: 5px;
+    @include respond-to(desktop) {
+      width: 40%;
+    }
   }
 
   .icon {
