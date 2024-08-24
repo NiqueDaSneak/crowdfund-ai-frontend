@@ -100,7 +100,7 @@ const ProductOverviewPage = (props: PageProps) => {
               <img className="icon" src={product.iconSrc} />
               <div className="label">
                 {product.label}
-                <FaInfoCircle className="info-icon" />
+                <FaInfoCircle style={{ fill: 'green' }} className="info-icon" />
                 <span className="tooltip">{product.tooltipText}</span>
               </div>
               <Button

@@ -58,6 +58,7 @@
     margin: 5px;
     border-radius: 10px;
     padding: 5px;
+    background-color: #000000b3;
     @include respond-to(desktop) {
       width: 40%;
     }
