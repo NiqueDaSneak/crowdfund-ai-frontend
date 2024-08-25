@@ -92,6 +92,20 @@ const CampaignPage = (props: PageProps) => {
     updatedData[index] = value;
     setSectionData(updatedData);
   };
+  const handleDeleteAndFetch = async (sectionName: string) => {
+    const dataType = sectionName.toLowerCase();
+
+    // Delete recommendations for this section
+    setRecommendations((prev) => {
+      const updatedRecommendations = { ...prev };
+      delete updatedRecommendations[dataType];
+      return updatedRecommendations;
+    });
+
+    // Trigger the handleSubmit to fetch new recommendations
+    await handleSubmit(sectionName);
+  };
+
   const handleSubmit = async (whatSection: string) => {
     setIsLoading(true); // Start loading
 
@@ -149,6 +163,7 @@ const CampaignPage = (props: PageProps) => {
             section={sections[openForm]}
             sectionData={sectionData[openForm]}
             onSectionDataChange={(value) => handleChange(openForm, value)}
+            handleDeleteAndFetch={() => handleDeleteAndFetch(currentDataType)}
             handleSubmit={() => {
               if (recommendations[currentDataType]) {
                 handleViewRecommendations();

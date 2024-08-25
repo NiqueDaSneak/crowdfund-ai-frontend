@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../Button/Button';
 import { Section } from '../../pages/campaign';
 import { FaInfoCircle } from 'react-icons/fa';
+import { FaArrowRotateLeft } from 'react-icons/fa6';
 
 interface CampaignFormProps {
   isAnimating: boolean;
@@ -12,6 +13,7 @@ interface CampaignFormProps {
   handleSubmit: () => void;
   hasRecommendations: boolean;
   isLoading: boolean;
+  handleDeleteAndFetch: () => void;
 }
 
 const CampaignForm: React.FC<CampaignFormProps> = ({
@@ -21,6 +23,7 @@ const CampaignForm: React.FC<CampaignFormProps> = ({
   sectionData,
   onSectionDataChange,
   handleSubmit,
+  handleDeleteAndFetch,
   hasRecommendations,
   isLoading,
 }) => {
@@ -55,17 +58,28 @@ const CampaignForm: React.FC<CampaignFormProps> = ({
           {sectionData.length}/{section.maxLength} characters
         </div>
         {section.title !== 'Categories' && (
-          <Button
-            disabled={sectionData.length < 10}
-            isLoading={isLoading}
-            label={
-              hasRecommendations
-                ? 'View Recommendations'
-                : 'Get Recommendations'
-            }
-            onClick={handleSubmit}
-            type="button"
-          />
+          <div className="rec-btn-group">
+            {hasRecommendations && (
+              <Button
+                // isLoading={isLoading}
+                label={<FaArrowRotateLeft />}
+                onClick={handleDeleteAndFetch}
+                type="button"
+              />
+            )}
+
+            <Button
+              disabled={sectionData.length < 10}
+              isLoading={isLoading}
+              label={
+                hasRecommendations
+                  ? 'View Recommendations'
+                  : 'Get Recommendations'
+              }
+              onClick={handleSubmit}
+              type="button"
+            />
+          </div>
         )}
       </form>
     </div>

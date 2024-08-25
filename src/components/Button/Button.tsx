@@ -2,7 +2,7 @@ import React from 'react';
 import { AiOutlineLoading } from 'react-icons/ai';
 
 interface ButtonProps {
-  label?: string;
+  label?: string | React.ReactElement;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   style?: React.CSSProperties;

@@ -158,3 +158,9 @@ $transition-ease: 0.3s ease;
     }
   }
 }
+
+.rec-btn-group {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}

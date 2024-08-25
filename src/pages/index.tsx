@@ -55,7 +55,8 @@ const IndexPage = (props: PageProps) => {
             <span className="subscript">.ai</span>
             <div className="blurred">
               <span className="subtitle">
-                Crowdfunding just got a whole lot easier.
+                Helping start and run your crowdfunding campiagn; from launch to
+                the moon!
               </span>
             </div>
           </div>
