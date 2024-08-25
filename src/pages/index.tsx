@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import type { HeadFC, PageProps } from 'gatsby';
 import '../components/index.scss';
-import logo from '../images/scout-logo.svg';
 import AnimatedChevron from '../components/AnimatedChevron/AnimatedChevron';
 import RotatingActionButton from '../components/RotatingActionButton/RotatingActionButton';
 import useIsVisible from '../utils/useIsVisible';
@@ -39,6 +38,21 @@ const IndexPage = (props: PageProps) => {
     }
   }, [isMenuOpen]);
 
+  const salesCopyConfig = [
+    {
+      copy: 'You have an idea!',
+      icon: '💡',
+    },
+    {
+      copy: 'Our suite of AI tools is like a rocketship for your crowdfunding project; and we trained it on campaigns that were already successful!',
+      icon: '🚀',
+    },
+    {
+      copy: 'You sit at the helm as we help you from launch to the moon!',
+      icon: '🌖',
+    },
+  ];
+
   return (
     <>
       {isMenuOpen && <DemoLoginModal />}
@@ -54,36 +68,24 @@ const IndexPage = (props: PageProps) => {
             <span className="hero-title">Scout</span>
             <span className="subscript">.ai</span>
             <div className="blurred">
-              <span className="subtitle">
+              <p className="subtitle">
                 Helping start and run your crowdfunding campiagn; from launch to
                 the moon!
-              </span>
+              </p>
             </div>
           </div>
           <div className={`${isFooterVisible ? 'hidden' : ''}`}>
             <AnimatedChevron />
           </div>
         </div>
-        <main className="sales-copy">
-          <p>
-            Our mission is to empower entrepreneurs and innovators by harnessing
-            the power of advanced artificial intelligence and machine learning
-            to maximize the success of their crowdfunding campaigns. We strive
-            to provide comprehensive, data-driven insights and automated
-            solutions that transform campaign creation and execution, ensuring
-            that every great idea has the best possible chance to flourish and
-            make a positive impact on the world.
-          </p>
-          <p>
-            Our vision is to become the leading platform for crowdfunding
-            success, recognized for our ability to blend cutting-edge AI
-            technology with deep market insights. We aspire to create an
-            ecosystem where creativity and innovation thrive, enabling creators
-            to achieve their goals and bring transformative products to market.
-            By continuously advancing our technology and expanding our reach, we
-            aim to revolutionize the crowdfunding landscape, making it more
-            efficient, accessible, and successful for all.
-          </p>
+
+        <main className="sales-copy-grid">
+          {salesCopyConfig.map((item, index) => (
+            <div key={index} className="sales-copy-item">
+              <div className="icon">{item.icon} </div>
+              <p className="sales-copy-text">{item.copy}</p>
+            </div>
+          ))}
         </main>
         <footer className="footer" ref={footerRef}>
           {/* <img

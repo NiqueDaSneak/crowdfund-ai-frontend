@@ -140,3 +140,36 @@
 .modal-open {
   overflow: hidden;
 }
+
+.sales-copy-grid {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 40px;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+
+  .sales-copy-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .icon {
+      font-size: 70pt;
+    }
+
+    .sales-copy-text {
+      font-size: 18px;
+      line-height: 1.5;
+      @include respond-to(desktop) {
+        max-width: 350px;
+      }
+    }
+  }
+
+  @include respond-to(desktop) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+  }
+}
