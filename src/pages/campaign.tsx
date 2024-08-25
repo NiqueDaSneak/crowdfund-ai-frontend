@@ -65,7 +65,8 @@ const CampaignPage = (props: PageProps) => {
     {},
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // New loading state
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleOpenForm = (index: number) => {
     if (openForm !== null) {
@@ -106,25 +107,24 @@ const CampaignPage = (props: PageProps) => {
     await handleSubmit(sectionName);
   };
 
-  const handleSubmit = async (whatSection: string) => {
-    setIsLoading(true); // Start loading
+  const handleSubmit = async (sectionName: string) => {
+    setIsLoading(true);
+    setErrorMessage(null); // Clear any existing error message
 
     try {
       const categories = sectionData[0];
       const sectionIndex = sections.findIndex(
-        (section) => section.title.toLowerCase() === whatSection,
+        (section) => section.title.toLowerCase() === sectionName,
       );
 
       if (sectionIndex === -1) {
-        console.error('Invalid section specified');
-        return;
+        throw new Error('Invalid section specified');
       }
 
       const dataType = sections[sectionIndex].title.toLowerCase();
       const dataBody = sectionData[sectionIndex];
-      console.log('Submitting section:', whatSection, 'as', dataType);
+
       const response = await processContent(dataType, dataBody, categories);
-      console.log({ response });
       setRecommendations((prev) => ({
         ...prev,
         [dataType]: response.recommendations,
@@ -132,8 +132,11 @@ const CampaignPage = (props: PageProps) => {
       setIsModalOpen(true);
     } catch (error) {
       console.error('Error submitting content:', error);
+      setErrorMessage(
+        'An error occurred while processing your request. Please try again.',
+      ); // Set the error message
     } finally {
-      setIsLoading(false); // Stop loading
+      setIsLoading(false);
     }
   };
 
@@ -157,6 +160,7 @@ const CampaignPage = (props: PageProps) => {
       <section>
         {openForm !== null ? (
           <CampaignForm
+            errorMessage={errorMessage}
             isLoading={isLoading}
             isAnimating={isAnimating}
             handleCloseForm={handleCloseForm}

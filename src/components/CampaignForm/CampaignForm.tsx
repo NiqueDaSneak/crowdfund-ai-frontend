@@ -14,6 +14,7 @@ interface CampaignFormProps {
   hasRecommendations: boolean;
   isLoading: boolean;
   handleDeleteAndFetch: () => void;
+  errorMessage: string | null;
 }
 
 const CampaignForm: React.FC<CampaignFormProps> = ({
@@ -26,6 +27,7 @@ const CampaignForm: React.FC<CampaignFormProps> = ({
   handleDeleteAndFetch,
   hasRecommendations,
   isLoading,
+  errorMessage,
 }) => {
   return (
     <div className={`form-container ${isAnimating ? 'fade-out' : 'fade-in'}`}>
@@ -46,6 +48,9 @@ const CampaignForm: React.FC<CampaignFormProps> = ({
           </span>
         )}
       </aside>
+      {/* Display the error message if it exists */}
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
+
       <form>
         <textarea
           maxLength={section.maxLength}
