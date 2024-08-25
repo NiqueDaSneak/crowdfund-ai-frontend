@@ -44,7 +44,7 @@ const IndexPage = (props: PageProps) => {
       icon: '💡',
     },
     {
-      copy: 'Our suite of AI tools is like a rocketship for your crowdfunding project; and we trained it on campaigns that were already successful!',
+      copy: "Our suite of AI tools is like a rocketship for your crowdfunding project; We train our AI on campaigns that were already very successful, and ones that were'nt so you know what not to do!",
       icon: '🚀',
     },
     {
