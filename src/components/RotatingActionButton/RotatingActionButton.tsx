@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import rotatingDemoText from '../../images/rotating-demo-text.svg';
 import rotatingBackText from '../../images/rotating-back-text.svg';
 import { navigate } from 'gatsby';
-import { IoArrowRedoOutline } from 'react-icons/io5';
-
+4;
 interface RotatingActionButtonProps {
   isMenuOpen: boolean;
   // setIsMenuOpen: (isOpen: boolean) => void;
