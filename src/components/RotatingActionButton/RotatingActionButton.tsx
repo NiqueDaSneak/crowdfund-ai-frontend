@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
 import rotatingDemoText from '../../images/rotating-demo-text.svg';
 import rotatingBackText from '../../images/rotating-back-text.svg';
+import { navigate } from 'gatsby';
+import { IoArrowRedoOutline } from 'react-icons/io5';
+
 interface RotatingActionButtonProps {
   isMenuOpen: boolean;
-  setIsMenuOpen: (isOpen: boolean) => void;
+  // setIsMenuOpen: (isOpen: boolean) => void;
 }
 
 const RotatingActionButton: React.FC<RotatingActionButtonProps> = ({
   isMenuOpen,
-  setIsMenuOpen,
+  // setIsMenuOpen,
 }) => {
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    // setIsMenuOpen(!isMenuOpen);
+    navigate('/products-overview');
   };
 
   return (
-    <button className="image-container">
+    <button className="image-container" onClick={toggleMenu}>
       <img
         src={isMenuOpen ? rotatingBackText : rotatingDemoText}
         alt="Background Image"
         className="background-image"
       />
-      <div
-        className={`hamburger-menu ${isMenuOpen ? 'open' : ''}`}
-        onClick={toggleMenu}
-      >
+      <div className={`hamburger-menu ${isMenuOpen ? 'open' : ''}`}>
         <div className="bar1"></div>
         <div className="bar2"></div>
         <div className="bar3"></div>
